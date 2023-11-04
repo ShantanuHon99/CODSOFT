@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            font-family: Arial, sans-serif;
+            
+        }
+        
+        .header {
+            background-image: url(https://wallpapercave.com/wp/wp2349419.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        
+        .header h1 {
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+            display: inline-block; 
+            background-color: black; 
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: orange; 
+            padding: 5px 10px; 
+            border-radius: 10px; 
+            font-weight: bold; 
+            letter-spacing: 2px; 
+        }
+
+        .nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: rgb(255, 184, 52);
+            font-weight: bold;
+        }
+
+        
+
+        .nav ul li a.button {
+            background-color: #007BFF; 
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        
+        .nav ul li a.signin {
+            background-color: #1e1c1c;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .nav ul li a.signin:hover{
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+        }
+
+        .description_section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-image: url(https://media.istockphoto.com/id/1286354786/vector/dark-prism-textured-abstract-background.jpg?s=612x612&w=0&k=20&c=lJiYScAyV7Iqn5FKdxMYCuntLO0ljQkR_oEftweNjmE=);
+            padding: 20px;
+            color: white;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        }
+        .description {
+            flex: 1;
+            padding: 38px;
+            background-color: rgba(23, 22, 22, 0.7);
+            border-radius: 10px;
+            border: 0.5px solid white;
+        }
+
+        .description h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: rgb(255, 191, 73);
+        }
+
+        .image {
+            flex: 1;
+            text-align: center;
+            background-color: rgb(255, 191, 73); 
+            box-shadow: 0px 0px 20px rgba(255, 136, 0, 0.977);
+            border-radius: 10px;
+            transition: transform 0.2s; 
+            overflow: hidden;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.2s;
+        }
+
+        .image:hover {
+            transform: scale(1.05); 
+            box-shadow: 0px 0px 30px rgba(255, 136, 0, 0.977); 
+        }
+
+        .boxes {
+            text-align: center; 
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto; 
+            max-width: 1200px; 
+        }
+
+        
+        .box {
+            
+            background-image: url(https://cdn.photoroom.com/v1/assets-cached.jpg?path=backgrounds_v3/black/Photoroom_black_background_extremely_fine_texture_only_black_co_bb229b4b-002b-4ec4-85fa-2aec353fc780.jpg);
+            color: white;
+            padding: 70px;
+            border-radius: 10px;
+            margin: 0 10px; 
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            width: 200px;
+            height: 250px;
+            flex: 1; 
+            max-width: 300px; 
+            border: 0.5px solid white;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .box_image {
+            width: 50px;
+            height: 80px;
+            display: flex;
+            margin-bottom: 10px;
+            margin-left: 30%;
+            justify-content: space-between;
+        }
+
+        .box_content h3 {
+            font-size: 21px;
+            margin: 0;
+            font-weight: bold;
+            color: rgb(255, 184, 52) ;
+        }
+
+        .box_content p {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 132, 0);
+            padding: 2px 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            border: 0.5px solid rgb(255, 132, 0);
+        }
+
+        .socials {
+            list-style: none;
+            padding: 0;
+        }
+
+        .socials li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .socials a {
+            text-decoration: none;
+            color: rgb(255, 132, 0);
+            font-size: 15px;
+        }
+
+        .contact,.contact li{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .contact li i {
+            margin-right: 10px; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ESPORTS</h1>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Games</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#" class="signin">Sign In</a></li>
+        </ul>
+    </div>
+    
+    
+    <section class="description_section">
+        <div class="description">
+            <h2>About Us</h2>
+            <p>ESPORTS is your premier destination for connecting with fellow gamers and enjoying a wide array of multiplayer and co-op games. </p>
+            <p>Discover new gaming partners, compete in exciting tournaments, and participate in lively discussions in our thriving community. </p>
+            <p>With cross-platform play, customizable profiles, and a secure environment, ESPORTS is your one-stop hub for connecting through the thrill of gaming. </p>
+            <p>Join us today and level up your gaming experience!</p>
+        </div>
+        <div class="image">
+            <img src="https://www.insidesport.in/wp-content/uploads/2022/06/BG.jpg" alt="">
+        </div>
+        
+        
+    </section>
+    <section class="description_section">
+        
+        <div class="boxes">
+            <div class="box">
+                <div class="box_content">
+                    <div class="box_image">
+                        <img src="https://staticg.sportskeeda.com/editor/2021/06/b400a-16226420458969.png" alt="Image 1">
+                    </div>
+                    <h3>PUBG</h3>
+                    <p>
+                        PUBG esports is competitive gaming based on PlayerUnknown's Battlegrounds, where professional teams from around the world compete for prizes in intense battle royale matches.</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="box_content">
+                    <div class="box_image">
+                        <img src="data:image/png;base64,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" alt="Image 2">
+                    </div>
+                    <h3>CODM</h3>
+                    <p>CODM esports is where top-tier players and teams square off in Call of Duty Mobile, vying for substantial rewards and captivating a worldwide audience of esports enthusiasts. </p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="box_content">
+                    <div class="box_image">
+                        <img src="data:image/png;base64,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" alt="Image 3">
+                    </div>
+                    <h3>CS:GO</h3>
+                    <p>CSGO esports is intense tactical shooter competition with pros and teams, big prizes, and a global fanbase. It's always evolving with updates for an engaging experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <footer>
+        <div>
+            <ul class="socials">
+                <li><a href="#"><i class="G-mail"></i> Email</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="socials">
+                <li><a href="#"><i class="LinkedIn"></i> LinkedIn</a></li>
+                <li><a href="#"><i class="Instagram"></i> Instagram</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="contact">
+                <li><i class="add"></i>124 Streer, Ahmednagar, India</li>
+                <li><i class="phone"></i>+91 (123) 456-7890</li>
+            </ul>
+        </div>
+        <div>
+            <p>&copy;2023 ESPORTS. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+
+    
+</body>
+</html>
+

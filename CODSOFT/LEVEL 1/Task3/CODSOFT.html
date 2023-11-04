@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000, #333);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #calculator {
+            background-color: #121212;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgb(255, 212, 71);
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+        }
+
+        #header {
+            text-align: left;
+            padding: 10px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #result {
+            text-align: right;
+            padding: 20px;
+            font-size: 24px;
+            color: white;
+            background-color: #333;
+            margin-bottom: 4px;
+            
+        }
+        #buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        button {
+            padding: 20px;
+            font-size: 18px;
+            background-color: orange;
+            border-radius: 20%;
+            color: black;
+            border: 2px solid black;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s, color 0.3s, border 0.3s;
+        }
+        button:hover {
+            background-color: black;
+            color: white;
+            transform: scale(1.1);
+        }
+        button.operator:active {
+            background-color: darkorange;
+        }
+        #clear {
+            background-color: red;
+            color: white;
+            border: 2px solid black;
+            transition: transform 0.2s, background-color 0.3s, color 0.3s, border 0.3s;
+        }
+        #clear:hover {
+            background-color: darkred;
+        }
+        button.operator, button#equals {
+            font-weight: bold;
+        }
+        button.operator {
+            background-color: #FF8C00;
+            color: black;
+        }
+        button#equals {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: .5rem 9%;
+            background-color: hsl(0, 0%, 8%);
+            display: flex;
+            justify-content: space between;
+            align-items: center;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 2.5rem;
+            color: orange;
+            font-weight: 600;
+            cursor: default;
+            text-decoration: none;
+        }
+        #backspace {
+            background-color: #FF4500;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Calculator</a>
+    </header>
+    <div id="calculator">
+        <div id="header">Calculator</div>
+        <div id="result">0</div>
+        <div id="buttons">
+            <button id="clear">C</button>
+            <button id="backspace">⌫</button>
+            <button id="percent" class="operator">%</button>
+            <button id="divide" class="operator">/</button>
+            <button class="digit" id="7">7</button>
+            <button class="digit" id="8">8</button>
+            <button class="digit" id="9">9</button>
+            <button id="multiply" class="operator">*</button>
+            <button class="digit" id="4">4</button>
+            <button class="digit" id="5">5</button>
+            <button class="digit" id="6">6</button>
+            <button id="subtract" class="operator">-</button>
+            <button class="digit" id="1">1</button>
+            <button class="digit" id="2">2</button>
+            <button class="digit" id="3">3</button>
+            <button id="add" class="operator">+</button>
+            <button class="digit" id="0">0</button>
+            <button id="decimal">.</button>
+            <button id="equals" class="operator">=</button>
+        </div>
+    </div>
+    
+    <script>
+        const resultDisplay = document.getElementById('result');
+        let currentInput = '0';
+        let equation = '';
+        let firstOperand = null;
+        let operator = null;
+        let awaitingNextInput = false;
+        let previousResult = null;
+
+        function inputDigit(digit) {
+            if (awaitingNextInput) {
+                currentInput = digit;
+                awaitingNextInput = false;
+            } else {
+                currentInput = currentInput === '0' ? digit : currentInput + digit;
+            }
+            equation += digit;
+            updateDisplay();
+        }
+
+        function inputDecimal() {
+            if (!currentInput.includes('.')) {
+                currentInput += '.';
+                equation += '.';
+            }
+            updateDisplay();
+        }
+
+        function handleOperator(nextOperator) {
+            if (operator === '=') {
+                firstOperand = previousResult;
+                previousResult = null;
+                equation = firstOperand.toString();
+            }
+            if (firstOperand === null) {
+                firstOperand = parseFloat(currentInput);
+                equation = currentInput;
+            } else if (operator) {
+                performCalculation();
+            }
+            operator = nextOperator;
+            awaitingNextInput = true;
+            equation += ` ${nextOperator} `;
+            updateDisplay();
+        }
+
+        function performCalculation() {
+            const inputValue = parseFloat(currentInput);
+            switch (operator) {
+                case '+':
+                    firstOperand += inputValue;
+                    break;
+                case '-':
+                    firstOperand -= inputValue;
+                    break;
+                case '*':
+                    firstOperand *= inputValue;
+                    break;
+                case '/':
+                    firstOperand /= inputValue;
+                    break;
+                case '%':
+                    firstOperand %= inputValue;
+                    break;
+            }
+            currentInput = firstOperand.toString();
+            equation = firstOperand.toString();
+        }
+
+        function resetCalculator() {
+            currentInput = '0';
+            equation = '';
+            firstOperand = null;
+            operator = null;
+            awaitingNextInput = false;
+            updateDisplay();
+        }
+
+        function backspace() {
+            currentInput = currentInput.slice(0, -1);
+            equation = equation.slice(0, -1);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            if (equation === '') {
+                resultDisplay.textContent = '0';
+            } else {
+                resultDisplay.textContent = equation;
+            }
+        }
+
+        const calculator = document.getElementById('calculator');
+        calculator.addEventListener('click', (event) => {
+            const { target } = event;
+            if (!target.matches('button')) {
+                return;
+            }
+
+            if (target.id === 'clear') {
+                resetCalculator();
+                return;
+            }
+
+            if (target.id === 'equals') {
+                if (operator !== null) {
+                    performCalculation();
+                    previousResult = firstOperand;
+                    operator = '=';
+                    awaitingNextInput = true;
+                    equation = firstOperand.toString();
+                    updateDisplay();
+                }
+                return;
+            }
+
+            if (target.classList.contains('operator')) {
+                handleOperator(target.textContent);
+                return;
+            }
+
+            if (target.classList.contains('digit')) {
+                inputDigit(target.textContent);
+                return;
+            }
+
+            if (target.id === 'decimal') {
+                inputDecimal();
+                return;
+            }
+
+            if (target.id === 'backspace') {
+                backspace();
+                return;
+            }
+        });
+    </script>
+</body>
+</html>

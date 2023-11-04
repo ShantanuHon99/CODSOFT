@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+        }
+
+        html{
+            font-size: 62.5%;
+        }
+
+        body{
+            background-color: #1c1c1c;
+            color: #ffffff;
+            
+        }
+
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 9%;
+            background-color: hsl(0, 0%, 8%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo{
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 600;
+            cursor: default;
+        }
+
+        .nav a{
+            color: #fff;
+            font-size: 2rem;
+            margin-left: 4rem;
+            transition: .5s;
+        }
+
+        .nav a:hover,.nav a.Home{
+            color: #ff872b;
+        }
+
+        #menu{
+            font-size: 4rem;
+            color: #fff;
+        }
+
+        section{
+            min-height: 100vh;
+            padding: 10rem 9% 2rem;
+        }
+
+        .home{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .homebody h3{
+            font-size: 3.2rem;
+            font-weight: 700;
+
+        }
+
+        .homebody h3:nth-of-type(2){
+            margin-bottom: 2rem;
+        }
+
+        span{
+            color: #ff872b
+            ;
+        }
+
+        .homebody h1{
+            font-size: 5.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+
+        }
+
+        .homebody p{
+            font-size: 1.6rem;
+            margin-right: 30px;
+        }
+
+        .myimg img{
+            width: 33vw;
+            border-radius: 50%;
+            transition: transform .2s;
+        }
+
+        .myimg img:hover{
+            transform: scale(1.05); 
+            box-shadow: 0px 0px 30px rgba(255, 136, 0, 0.977);
+        }
+
+        .socials a{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4rem;
+            height: 4rem;
+            background: transparent;
+            border: .2rem solid #ff872b;
+            border-radius: 50%;
+            font-size: 2rem;
+            color: #ff872b;
+            margin: 3rem 1.5rem 3rem 0;
+            transition: .5s ease;
+        }
+
+        .socials a:hover{
+            background: #ff872b;
+            color: rgb(0, 0, 0);
+            box-shadow: 0 0 1rem #ff872b;
+
+        }
+
+        .btn{
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            background: #ff872b;
+            border-radius: 4rem;
+            font-size: 2rem;
+            letter-spacing: .2rem;
+            color: #1c1c1c;
+            font-weight: 600;
+            transition: .5 ease;
+        }
+
+        .btn:hover{
+            background-color: black;
+            color: #ff872b;
+            box-shadow: 0 0 1rem #ff872b;
+        }
+
+        .about{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            background-color: #1f1f1f;
+        }
+
+    
+        .aboutimg img{
+            width: 20vw;
+            border-radius: 50%;
+            transition: transform .2s;
+            animation: neonLight 2s linear infinite;
+        }
+
+
+        .aboutimg img:hover{
+            transform: scale(1.05); 
+        }
+
+        .heading{
+            text-align: center;
+            font-size: 4.5rem;
+        }
+        .aboutbox h2{
+            text-align: left;
+            line-height: 1.2;
+        }
+        .aboutbox h3{
+            font-size: 2.6rem;
+        }
+        .aboutbox p{
+            font-size: 1.6rem;
+            margin: .7rem 0 1.8rem ;
+        }
+
+        
+        .service h2{
+            margin-bottom: 5rem;
+            text-align: center; 
+            margin-bottom: 5rem;
+            font-size: 34px;
+            font-weight: 800;
+        }
+
+        .serbigbox{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .serbigbox .serbox{
+            flex: 1 1 30rem;
+            background: #1b1b1b;
+            padding: 3rem 2rem 4rem;
+            border-radius: 2rem;
+            height: 400px;
+            text-align: center;
+            border: .2rem solid #ff872b;
+            transition: transform 0.2s, box-shadow 0.2s;
+            
+        }
+        .serbigbox .serbox:hover{
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .serbox i{
+            font-size: 7rem;
+            color: #ff872b;
+        }
+        .serbox h3{
+            font-size: 2.6rem;
+        }
+        .serbox p{
+            font-size: 1.6rem;
+            margin: 1rem 0 3rem;
+
+        }
+        .serbtn{
+            padding: 1rem 2.8rem;
+            background: #ff872b;
+            border-radius: 4rem;
+            font-size: 2rem;
+            letter-spacing: .2rem;
+            color: #1c1c1c;
+            font-weight: 600;
+            transition: .5 ease;
+        }
+        .serbtn:hover{
+            background-color: black;
+            color: #ff872b;
+            box-shadow: 0 0 1rem #ff872b;
+        }
+
+        .project{
+            background-color: #1f1f1f;
+        }
+
+        .project h2{
+            margin-bottom: 4.1rem;
+        }
+
+        .probigbox{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            align-items: center;
+            gap: 2.7rem;
+        }
+
+        .probigbox .probox{
+            position: relative;
+            border-radius: 2.3rem;
+            box-shadow: 0 0 1.3rem #1c1c1c;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .probox img{
+            width: 100%;
+            height: 350px;
+
+        }
+
+        .probox:hover img{
+            transform: scale(1.3);
+        }
+
+        .probox .layer{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,.1),#ff872b);
+            display: flex;
+            margin-top: 50%;
+            align-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 4rem;
+            transform: translate(100%);
+        }
+
+        .probox .layer:hover h3{
+            transform: translate(0);
+        }
+        
+        .probox:hover .layer{
+            transform: translate(0);
+        }
+
+        .layer h3{
+            font-size: 4.2rem;
+            display: flex;
+            margin-top: 15%;
+            align-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 4rem;
+            background-color: #131313;
+            border-radius: 2.3rem;
+            color: #ff872b;
+            
+            
+        }
+
+        .layer p{
+            font-size: 1.9rem;
+            margin: .3rem 0 1rem;
+            background-color: #131313;
+            border-radius: 3.3rem;
+            font-weight: 700;
+        }
+
+        .layer a{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 5.2rem;
+            width: 5.2rem;
+            background-color: #fff;
+            color: #ff872b;
+            border-radius: 50%;
+            transition: ease;
+        }
+
+        .layer a:hover{
+            background: #1c1c1c;
+            box-shadow: 0 0 1rem #000000;
+
+        }
+
+        .layer a i{
+            font-size: 2rem;
+            color: #000000;
+            transition: ease;
+        }
+
+        .layer a:hover i{
+            color: #ff872b;
+        }
+
+        .contact h2{
+            margin-bottom: 3rem;
+        }
+
+        .contact form{
+            max-width: 70rem;
+            margin: 1rem auto;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact form .details{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .contact form .details input, .contact form textarea{
+            width: 100%;
+            padding: 1.7rem;
+            font-size: 1.8rem;
+            color: #ff872b;
+            background-color: #1f1f1f;
+            border-radius: 1rem ;
+            margin: .8rem 0;
+        }
+
+        .contact form textarea{
+            resize: none;
+        }
+
+        .contact form .btn{
+            margin-top: 2.3rem;
+            cursor: pointer;
+            transition: .5 ease;
+        }
+
+        .contact form .btn:hover{
+            background-color: black;
+            color: #ff872b;
+            box-shadow: 0 0 1rem #ff872b;
+        }
+
+        .footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 2rem 9%;
+            background-color: #252525;
+        }
+        .footerbody p{
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+
+        .footicon{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: .3rem;
+            border-radius: 1rem;
+        }
+
+        .footicon a i{
+            margin-left: 400px;
+            font-size: 2.5rem;
+            color: #000000;
+            transition: .5 ease;
+            background-color: #ff872b;
+            border-radius: 50%;
+        }
+
+        .footicon a i:hover{
+            background-color: black;
+            color: #ff872b;
+            box-shadow: 0 0 1rem #ff872b;
+            border-radius: 50%;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">MyPortfolio</a>
+        <nav class="nav">
+            <a href="#home" class="Home">Home</a>
+            <a href="#about">About</a>
+            <a href="#service">Service</a>
+            <a href="#project">Projects</a>
+            <a href="#contact">Contact</a>
+            
+        </nav>
+        <i class='bx bx-menu' id="menu"></i>
+    </header>
+
+    <section class="home" id="home">
+        <div class="homebody">
+            <h3>Hello, I am</h3>
+            <h1>Shantanu Hon</h1>
+            <h3>And I'm a <span>Web Developer</span></h3>
+            <p>Currently pursuing B.Tech Information Technology at Sanjivani College of Engineering, Kopargaon as well as a Web Development Intern at CodSoft.</p>
+            <div class="socials">
+                <a href="#"><i class='bx bxl-linkedin' ></i></a>
+                <a href="#"><i class='bx bxl-instagram' ></i></a>
+                <a href="#"><i class='bx bxl-twitter' ></i></a>
+                <a href="#"><i class='bx bxl-discord-alt' ></i></a>
+            </div>
+            <a href="#" class="btn">Download CV</a>
+        </div>
+        
+        <div class="myimg">
+            <img src="C:/Users/DELL/Desktop/CODSOFT/Task1/Myself-fotor-20231008203929.png" alt="">
+        </div>
+        
+    </section>
+
+    <section class="about" id="about">
+        <div class="aboutimg">
+            <img src="C:/Users/DELL/Desktop/CODSOFT/Task1/Me.jpg" alt="">
+        </div>
+        <div class="aboutbox">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>Student</h3>
+            <p><span>Name:</span> Shantanu Hon</p>
+            <p><span>Age:</span> 19</p>
+            <p><span>Profession:</span> Student/Intern</p>
+            <p><span>Education:</span> B.Tech IT (Pursuing)</p>
+            <p><span>College:</span> Sanjivani College of Engineering</p>
+            <p><span>Expertise:</span> Web Developement, Java Programming, Powerpoint</p>
+            <a href="#" class="serbtn">Read More</a>
+        </div>
+    </section>
+
+    <section class="service" id="service">
+        <h2 class="heading">My <span>Services</span></h2>
+        <div class="serbigbox">
+            <div class="serbox">
+                <i class='bx bx-code-alt' ></i>
+                <h3>Web Development</h3>
+                <p>I am learn Web Development from 3 month. I have good hands on HTML and CSS and some of JavaScript. I have made landing pages, portfolios and much more.</p>
+                <a href="#" class="serbtn">Read More</a>
+            </div>
+            <div class="serbox">
+                <i class='bx bxl-java' ></i>
+                <h3>Java Programmer</h3>
+                <p>Learning Java since 6 months and I am pretty good at Data Structure and Algorithms. I can code for your projects.</p>
+                <a href="#" class="serbtn">Read More</a>
+            </div>
+            <div class="serbox">
+                <i class='bx bx-slideshow' ></i>
+                <h3>Powerpoint</h3>
+                <p>Making Powerpoint Presentations since last 4 years. I have made around 20+ presentations for School and College works.</p>
+                <a href="#" class="serbtn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="project" id="project">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="probigbox">
+            <div class="probox">
+                <img src="C:/Users/DELL/Desktop/CODSOFT/Task1/img1.jpg" alt="">
+                <div class="layer">
+                    <h3>Web Designs</h3>
+                    <p>I have designed landing pages and portfolios with my expertise in HTML and CSS</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="probox">
+                <img src="C:/Users/DELL/Desktop/CODSOFT/Task1/img2.jpg" alt="">
+                <div class="layer">
+                    <h3>Career Guidance App</h3>
+                    <p>I have helped my team in making a AI based Career Guidance application</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="probox">
+                <img src="C:/Users/DELL/Desktop/CODSOFT/Task1/img3.jpg" alt="">
+                <div class="layer">
+                    <h3>Encoding and Decoding</h3>
+                    <p>Using the ASCII value of words I have made a program to Encode and Decode Certain Messege</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="probox">
+                <img src="C:/Users/DELL/Desktop/CODSOFT/Task1/img4.jpg" alt="">
+                <div class="layer">
+                    <h3>Dictionary</h3>
+                    <p>I have created a Dictionary using DSA with auto word complete feature</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Here !!</span></h2>
+        <form action="#">
+            <div class="details">
+                <input type="text" placeholder="Enter Name">
+                <input type="email" placeholder="Enter Mail">
+                <input type="number" placeholder="Enter Mobile Number">
+                <input type="text" placeholder="Subject for Contact">
+            </div>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Messege"></textarea>
+            <input type="submit" value="Send" class="btn">
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footerbody">
+            <p>Copyright &copy; 2023 by Shantanu Hon | All rights reserved</p>
+        </div>
+
+        <div class="footicon">
+            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
